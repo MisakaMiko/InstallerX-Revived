@@ -119,14 +119,14 @@ jobs:
           path: app/build/outputs/apk/**/release/mapping.txt
           retention-days: 15
           archive: false
-      - name: Package Magisk Module
-        run: |
+- name: Package Magisk Module
+  run: |
     # 创建 Magisk 模块的目录结构（包名要与你手机系统安装器一致）
-        MODULE_PATH="module_src/system/priv-app/com.android.packageinstaller"
-        mkdir -p "$MODULE_PATH"
+    MODULE_PATH="module_src/system/priv-app/com.android.packageinstaller"
+    mkdir -p "$MODULE_PATH"
     # 复制构建好的 APK，并重命名
-       cp app/build/outputs/apk/*/release/*.apk "$MODULE_PATH/InstallerX.apk"
+    cp app/build/outputs/apk/*/release/*.apk "$MODULE_PATH/InstallerX.apk"
     # 生成 module.prop（模块身份文件）
-       printf 'id=installerx-revived\nname=InstallerX Revived\nversion=1.0\nversionCode=1\n' > module_src/module.prop
+    printf 'id=installerx-revived\nname=InstallerX Revived\nversion=1.0\nversionCode=1\n' > module_src/module.prop
     # 打包成 ZIP
-       cd module_src && zip -r ../InstallerX-Module.zip . && cd ..
+    cd module_src && zip -r ../InstallerX-Module.zip . && cd ..
