@@ -129,3 +129,8 @@ jobs:
           echo "version=1.0" >> module_src/module.prop
           echo "versionCode=1" >> module_src/module.prop
           cd module_src && zip -r ../InstallerX-Module.zip . && cd ..
+      - name: Upload Magisk Module
+        uses: actions/upload-artifact@v4
+        with:
+          name: InstallerX-Module
+          path: InstallerX-Module.zip
