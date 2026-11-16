@@ -124,5 +124,8 @@ jobs:
           MODULE_PATH="module_src/system/priv-app/com.android.packageinstaller"
           mkdir -p "$MODULE_PATH"
           cp app/build/outputs/apk/*/release/*.apk "$MODULE_PATH/InstallerX.apk"
-          printf 'id=installerx-revived\nname=InstallerX Revived\nversion=1.0\nversionCode=1\n' > module_src/module.prop
+          echo "id=installerx-revived" > module_src/module.prop
+          echo "name=InstallerX Revived" >> module_src/module.prop
+          echo "version=1.0" >> module_src/module.prop
+          echo "versionCode=1" >> module_src/module.prop
           cd module_src && zip -r ../InstallerX-Module.zip . && cd ..
